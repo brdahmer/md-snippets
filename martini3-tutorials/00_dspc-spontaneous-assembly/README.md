@@ -94,28 +94,28 @@ echo "0" | gmx trjconv -s dspc-md.tpr -f dspc-md.xtc -o dspc-md.pdb -pbc whole -
 pymol dspc-md.pdb 
 ```
 
->[!Important]+
->If a bilayer did form during the simulation, check if it is normal to the **z-axis** (i.e., that the membrane is situated in the **xy-plane**). 
->This can be done by profiling the `density` along all three axes; the **normal** is found in whatever plot shows high lipid content where water is low (water-free region in a hydrophobic core)
->
->`echo "2" "3" | gmx density -s dspc-md.tpr -f dspc-md.gro -d X -ng 2 -o dens_x.xvg`
->`echo "2" "3" | gmx density -s dspc-md.tpr -f dspc-md.gro -d Y -ng 2 -o dens_y.xvg`
->`echo "2" "3" | gmx density -s dspc-md.tpr -f dspc-md.gro -d Z -ng 2 -o dens_z.xvg`
->
->In our case, the bilayer was formed normal to the **x-axis!**
->
->In cases like this, we can rotate the system with `gmx editconf -rotate`. 
->For a normal along **x**, we rotate 90 degrees along **y**. 
->`gmx editconf -f dspc-md.gro -o dspc-rot.gro -rotate 0 90 0`
->For a normal along **y**, we rotate 90 degrees along **x**:
->`gmx editconf -f dspc-md.gro -o dspc-rot.gro -rotate 90 0 0`
->For the trajectory:
->`gmx trjconv -s dspc-md.tpr -f dspc-rot.gro -o dspc-rot-wrapped.gro -pbc mol -ur compact`
->
+#### Important
+If a bilayer did form during the simulation, check if it is normal to the **z-axis** (i.e., that the membrane is situated in the **xy-plane**). 
+This can be done by profiling the `density` along all three axes; the **normal** is found in whatever plot shows high lipid content where water is low (water-free region in a hydrophobic core)
+
+`echo "2" "3" | gmx density -s dspc-md.tpr -f dspc-md.gro -d X -ng 2 -o dens_x.xvg`
+`echo "2" "3" | gmx density -s dspc-md.tpr -f dspc-md.gro -d Y -ng 2 -o dens_y.xvg`
+`echo "2" "3" | gmx density -s dspc-md.tpr -f dspc-md.gro -d Z -ng 2 -o dens_z.xvg`
+
+In our case, the bilayer was formed normal to the **x-axis!**
+
+In cases like this, we can rotate the system with `gmx editconf -rotate`. 
+For a normal along **x**, we rotate 90 degrees along **y**. 
+`gmx editconf -f dspc-md.gro -o dspc-rot.gro -rotate 0 90 0`
+For a normal along **y**, we rotate 90 degrees along **x**:
+`gmx editconf -f dspc-md.gro -o dspc-rot.gro -rotate 90 0 0`
+For the trajectory:
+`gmx trjconv -s dspc-md.tpr -f dspc-rot.gro -o dspc-rot-wrapped.gro -pbc mol -ur compact`
+
 >Verify the orientation:
->
->`gmx density -s dspc-md.tpr -f dspc-rot-wrapped.gro -d Z -ng 2 -o dens_z_rot.xvg`
->
+
+`gmx density -s dspc-md.tpr -f dspc-rot-wrapped.gro -d Z -ng 2 -o dens_z_rot.xvg`
+
 
 ### Bilayer equilibration and analysis
 
