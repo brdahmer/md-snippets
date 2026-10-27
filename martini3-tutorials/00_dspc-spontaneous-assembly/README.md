@@ -154,7 +154,7 @@ Generally, the area per lipid (APL) can be calculated by dividing the area of th
 `11 12 0`
 `qtgrace -nxy box-xy.xvg`
 
-![[Pasted image 20261027150947.png|341]]
+<img width="618" height="565" alt="Pasted image 20261027150947" src="https://github.com/user-attachments/assets/ec3c7062-cafc-4037-a7e5-12dc17082231" />
 
 Because of the semi-isotropic coupling, both dimensions vary simultaneously and thus their output is the same. Looking at the graph, we can discard the first 15000 ps from the simulation as non-equilibrated (relaxation time).
 
@@ -168,7 +168,7 @@ np.savetxt('area.xvg', np.column_stack((xy[:,0], areas)))
 quit()
 ```
 
-![[Pasted image 20261027151322.png|345]]
+<img width="793" height="552" alt="Pasted image 20261027151322" src="https://github.com/user-attachments/assets/d9992761-9174-4c31-a37d-7d107c4301d4" />
 
 The averages and error estimates can be extracted with the `gmx analyze` module:
 
@@ -177,7 +177,7 @@ The averages and error estimates can be extracted with the `gmx analyze` module:
 Or, discarding the first 15000 ps:
 `gmx analyze -f area.xvg -ee -b 15000`
 
-![[Pasted image 20261027151958.png|341]]
+<img width="687" height="620" alt="Pasted image 20261027151958" src="https://github.com/user-attachments/assets/cd94f006-59c8-4803-9208-5392dca727db" />
 
 This gives APL of 0.593 ± 0.003 nm². Experimental data using small-angle neutron scattering give an APL of 0.65 ± 0.05 nm². Given the short simulation time, small hydration, and possible assymetry in lipid numbers, this is fine. 
 ___
@@ -192,7 +192,7 @@ q
 ```
 `echo "4" | gmx density -f dspc-eq.xtc -s dspc-eq.tpr -b 15000 -n index.ndx -o p-density.xvg -xvg no`
 
-![[Pasted image 20261027152459.png|349]]
+<img width="759" height="541" alt="Pasted image 20261027152459" src="https://github.com/user-attachments/assets/13decefc-775b-41d5-98fd-73ce0daa7bf9" />
 
 This gives one peak at ~0.49 nm and ~3.00 nm. The thickness is the gap between the gaps and the region from ~4 nm to ~6.5 nm, to a total bilayer thickness of ~4.4 nm. Experimental = 4.98 ± 0.15 nm.
 ___
@@ -206,7 +206,7 @@ echo 0 | gmx trjconv -f dspc-eq-pbc.xtc -s dspc-eq.tpr -pbc nojump -o dspc-eq-no
 echo 2 | gmx msd -f dspc-eq-nojump.xtc -s dspc-eq.tpr -lateral z -b 15000 -trestart 20 -o msd.xvg
 ```
 
-![[Pasted image 20261027154404.png|333]]
+<img width="516" height="621" alt="Pasted image 20261027154404" src="https://github.com/user-attachments/assets/7d37a96e-8bd2-42da-bebc-1032ee7a3a44" />
 
 ___
 #### Order parameters
@@ -218,6 +218,6 @@ Usage: `do-order-gmx5-p3.py <traj file> <tpr file> <initial time> <final time> <
 `python3 do-order-gmx5-p3.py dspc-eq.xtc dspc-eq.tpr 15000 30000 20 0 0 1 128 DSPC`
 
 The script writes the results in `order.dat` 
-![[Pasted image 20261027160832.png]]
+<img width="785" height="79" alt="Pasted image 20261027160832" src="https://github.com/user-attachments/assets/157357f5-ee2a-4c83-bc29-b968ddb53497" />
 and the order parameter profile in `S-profile.dat`, the latter of which we can plot with a custom script:
-![[Pasted image 20261027161338.png|362]]
+<img width="633" height="473" alt="Pasted image 20261027161338" src="https://github.com/user-attachments/assets/be445c9e-c640-4301-9774-bfa7197081ea" />
