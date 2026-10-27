@@ -1,0 +1,5 @@
+# large / regenerable GROMACS outputs
+*.pdb
+*~
+*.pdb
+*.pdb

@@ -1,0 +1,75 @@
+# This file was created Tue Oct 27 04:41:32 2026
+# Created by:
+#                     :-) GROMACS - gmx density, 2022.2 (-:
+# 
+# Executable:   /usr/local/gromacs/bin/gmx
+# Data prefix:  /usr/local/gromacs
+# Working dir:  /Users/bdahmer/Documents/martini3-tutorials/bilayer-lipidome-tutorial-I/minimal/m3-dspc-spontaneous-assembly
+# Command line:
+#   gmx density -s dspc-md.tpr -f dspc-rot-wrapped.gro -d Z -ng 2 -o dens_z_rot.xvg
+# gmx density is part of G R O M A C S:
+#
+# GROningen Mixture of Alchemy and Childrens' Stories
+#
+@    title "Partial density"
+@    xaxis  label "Average coordinate (nm)"
+@    yaxis  label "Density (kg m\S-3\N)"
+@TYPE xy
+@ view 0.15, 0.15, 0.75, 0.85
+@ legend on
+@ legend box on
+@ legend loctype view
+@ legend 0.78, 0.8
+@ legend length 2
+@ s0 legend "DSPC"
+@ s1 legend "W"
+   0.0642379          873.875        248.068
+    0.192714          952.806        270.619
+    0.321189            699.1        451.032
+    0.449665          501.773        383.377
+    0.578141          659.635        586.342
+    0.706617          462.308        631.445
+    0.835093          202.965        902.064
+    0.963569           135.31        856.961
+     1.09204          112.758        879.513
+     1.22052          45.1032        811.858
+       1.349                0        969.719
+     1.47747                0        1059.93
+     1.60595                0        879.513
+     1.73442                0        1037.37
+      1.8629                0        992.271
+     1.99137                0        856.961
+     2.11985          67.6548        1105.03
+     2.24833           135.31        653.997
+      2.3768          270.619         834.41
+     2.50528          338.274        586.342
+     2.63375          676.548         563.79
+     2.76223           806.22        383.377
+     2.89071            699.1        473.584
+     3.01918          828.772        270.619
+     3.14766          952.806         135.31
+     3.27613          1093.75        90.2064
+     3.40461          885.151        90.2064
+     3.53308          1014.82        45.1032
+     3.66156          823.134        22.5516
+     3.79004          1105.03              0
+     3.91851          902.064              0
+     4.04699          1037.37              0
+     4.17546          879.513              0
+     4.30394          969.719              0
+     4.43242          924.616              0
+     4.56089          947.168              0
+     4.68937          1014.82              0
+     4.81784          811.858        22.5516
+     4.94632          879.513              0
+     5.07479          992.271              0
+     5.20327          856.961              0
+     5.33175          1150.13              0
+     5.46022           834.41              0
+      5.5887          947.168              0
+     5.71717          1105.03              0
+     5.84565          992.271              0
+     5.97412          845.685              0
+      6.1026          986.633        67.6548
+     6.23108           913.34        67.6548
+     6.35955          862.599        90.2064

@@ -1,0 +1,56 @@
+integrator               = md
+dt                       = 0.02
+nsteps                   = 1500000
+
+; Center of mass removal
+comm-mode                = Linear
+nstcomm                  = 100
+comm-grps                = DSPC W
+
+nstxout                  = 0
+nstvout                  = 0
+nstfout                  = 0
+nstlog                   = 10000
+nstenergy                = 1000
+nstxout-compressed       = 1000
+compressed-x-precision   = 100
+compressed-x-grps        =
+energygrps               = System
+
+cutoff-scheme            = Verlet
+nstlist                  = 20
+nsttcouple               = 20
+nstpcouple               = 20
+rlist                    = 1.35
+verlet-buffer-tolerance  = -1
+ns_type                  = grid
+pbc                      = xyz
+
+coulombtype              = reaction-field
+rcoulomb                 = 1.1
+epsilon_r                = 15	; 2.5 (with polarizable water)
+epsilon_rf               = 0
+vdw_type                 = cutoff
+vdw-modifier             = Potential-shift-verlet
+rvdw                     = 1.1
+
+tcoupl                   = v-rescale
+tc-grps                  = DSPC W
+tau_t                    = 1.0 1.0
+ref_t                    = 340 340
+
+gen_vel                  = no
+continuation             = yes
+
+; Pressure coupling     
+Pcoupl                   = c-rescale
+Pcoupltype               = semi-isotropic
+tau_p                    = 4.0 
+ref_p                    = 1.0 1.0
+compressibility          = 3e-4 3e-4
+
+constraints              = none
+constraint_algorithm     = Lincs
+lincs_order              = 8
+lincs_warnangle          = 90
+lincs_iter               = 2

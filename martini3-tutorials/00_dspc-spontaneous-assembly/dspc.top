@@ -1,0 +1,14 @@
+#include "./martini_v300/martini_v3.0.0.itp" ; the particle definitions should be included first
+#include "./martini_v300/martini_v3.0.0_ffbonded_v2.itp" ; the general lipid bonded definitions should be included before the specific lipid topologies
+#include "./martini_v300/martini_v3.0.0_phospholipids_PC_v2.itp" ; remaining relevant .itps for molecules
+#include "./martini_v300/martini_v3.0.0_solvents_v1.itp" ; for water
+
+[ system ]
+; Title
+DSPC BILAYER SELF-ASSEMBLY
+
+[ molecules ]
+; Molecule types and their numbers are written in the order
+; they appear in the structure file
+DSPC 128 ; from gmx insert-molecules
+W    768 ; from gmx solvate
