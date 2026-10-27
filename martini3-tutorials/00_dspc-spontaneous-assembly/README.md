@@ -25,32 +25,32 @@ gmx solvate -cp 128_noW.gro -cs water.gro -o waterbox.gro -maxsol 768 -radius 0.
 3. Simple energy minimization of the solvated system:
 
 First, build the `topology` file (`.top`):
->[!dspc.top]+
-\#include "./martini_v300/martini_v3.0.0.itp" ; the particle definitions should be included first
-\#include "./martini_v300/martini_v3.0.0_ffbonded_v2.itp" ; the general lipid bonded definitions should be included before the specific lipid topologies
-\#include "./martini_v300/martini_v3.0.0_phospholipids_PC_v2.itp" ; remaining relevant .itps for molecules
-\#include "./martini_v300/martini_v3.0.0_solvents_v1.itp" ; for water
->
-\[ system ]
+```
+#include "./martini_v300/martini_v3.0.0.itp" ; the particle definitions should be included first
+#include "./martini_v300/martini_v3.0.0_ffbonded_v2.itp" ; the general lipid bonded definitions should be included before the specific lipid topologies
+#include "./martini_v300/martini_v3.0.0_phospholipids_PC_v2.itp" ; remaining relevant .itps for molecules
+#include "./martini_v300/martini_v3.0.0_solvents_v1.itp" ; for water
+
+[ system ]
 ; Title
 DSPC BILAYER SELF-ASSEMBLY
->
-\[ molecules ]
+
+[ molecules ]
 ; Molecule types and their numbers are written in the order
 ; they appear in the structure file
 DSPC 128 ; from gmx insert-molecules
 W    768 ; from gmx solvate
-
+```
 
 And the `.mdp` file:
->[!minimization.mdp]+
+```
 integrator               = steep
 nsteps                   = 10000
->
+
 nstxout                  = 0
 nstvout                  = 0
 nstfout                  = 0
->
+
 cutoff-scheme            = Verlet
 nstlist                  = 20
 nsttcouple               = 20
@@ -59,7 +59,7 @@ rlist                    = 1.35
 verlet-buffer-tolerance  = -1
 ns_type                  = grid
 pbc                      = xyz
->
+
 coulombtype              = reaction-field
 rcoulomb                 = 1.1
 epsilon_r                = 15	; 2.5 (with polarizable water)
@@ -67,13 +67,13 @@ epsilon_rf               = 0
 vdw_type                 = cutoff
 vdw-modifier             = Potential-shift-verlet
 rvdw                     = 1.1
->
+
 constraints              = none
 constraint_algorithm     = Lincs
 lincs_order              = 8
 lincs_warnangle          = 90
 lincs_iter               = 2
-
+```
 Set up and run:
 ```
 gmx grompp -f minimization.mdp -c waterbox.gro -p dspc.top -o em.tpr
