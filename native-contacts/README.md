@@ -16,3 +16,8 @@ so global Q can be recovered as a contact-count-weighted mean of qa as means of 
 
 **Usage**
     python perresq.py -f md.xtc -s md.gro -o output_name
+    
+## References
+
+
+- Best, R. B., Hummer, G. & Eaton, W. A. Native contacts determine protein folding mechanisms in atomistic simulations. *Proc. Natl. Acad. Sci. USA* **110**, 17874–17879 (2013). [doi:10.1073/pnas.1311599110](https://doi.org/10.1073/pnas.1311599110)
